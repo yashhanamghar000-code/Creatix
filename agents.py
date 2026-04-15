@@ -5,7 +5,16 @@ from tools import web_search, scrape_url
 from dotenv import load_dotenv
 
 load_dotenv()
+import streamlit as st
+import os
 
+api_key = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
+
+llm = ChatOpenAI(
+    model="gpt-4o-mini",
+    temperature=0,
+    api_key=api_key
+)
 # ── Model ─────────────────────────────────────────
 llm = ChatOpenAI(
     model="gpt-4o-mini",

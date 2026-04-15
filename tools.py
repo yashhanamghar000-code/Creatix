@@ -5,9 +5,11 @@ from tavily  import TavilyClient
 import os 
 from dotenv import load_dotenv
 from rich import print
+import streamlit as st
+
 load_dotenv()
 
-tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
+tavily = TavilyClient(api_key=st.secrets["TAVILY_API_KEY"])
 
 @tool
 def web_search(query : str) -> str:
