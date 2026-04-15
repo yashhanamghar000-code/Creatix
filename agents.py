@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 # ── Load API KEY safely ─────────────────────────────
-api_key = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
+api_key = os.getenv("OPENAI_API_KEY") or st.secrets.get("OPENAI_API_KEY")
 
 if not api_key:
     raise ValueError("OPENAI_API_KEY is missing")
